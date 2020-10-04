@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron bg-dark">
+    <h1 class="display-4 text-success">Salvage Plan <i class="fas fa-ambulance"></i></h1>
+    <hr class="bg-success">
+    <p class="lead text-success">Seattle Community Covid Response Resource Locator</p>
+    {% if user.is_authenticated %}
+    <h5 class="d-inline lead text-success">Welcome, {{user}}.  </h5>
+    {% endif %}
+    <br>
+    {% if not user.is_authenticated %}
+    <h5 class="lead text-danger"><i class="fas fa-exclamation"></i> PLEASE SIGN UP and or LOG IN TO OFFER/ASK FOR HELP <i class="fas fa-exclamation"></i></h5>
+    {% endif %}
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">I Have Something to Offer</h5>
+                    <hr class="bg-dark">
+                    <p class="card-text text-center">Food, Transportation, Supplies, Advice, Friendship.</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'offer' %}" class="btn btn-success btn-lg btn-block">Offer Something</a>
+                    <a href="{% url 'help_posts' %}" class="btn btn-success btn-lg btn-block">View Requests for Help</a>
+                    <a href="{% url 'delete_posts' %}" class="btn btn-warning btn-lg btn-block">Manage Your Offer Posts</a>
+                    {% endif %}
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'signup' %}" class="btn btn-success btn-lg btn-block">Sign Up</a>
+                    <a href="{% url 'login' %}" class="btn btn-success btn-lg btn-block">Log In</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">I Could Use a Little Help</h5>
+                    <hr class="bg-dark">
+                    <p class="card-text text-center">Food, Transportation, Supplies, Advice, Friendship.</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'help' %}" class="btn btn-success btn-lg btn-block">Get a Little Help</a>
+                    <a href="{% url 'offer_posts' %}" class="btn btn-success btn-lg btn-block">View Offers of Help</a>
+                    <a href="{% url 'delete_help_posts' %}" class="btn btn-warning btn-lg btn-block">Manage Your Help Posts</a>
+                    {% endif %}
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'signup' %}" class="btn btn-success btn-lg btn-block">Sign Up</a>
+                    <a href="{% url 'login' %}" class="btn btn-success btn-lg btn-block">Log In</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>    
+
+    <hr class="my-4 bg-success"/>
+    <h2 class="display-4 text-success text-center"> Covid19 Info  <i class="fas fa-laptop-medical"></i></h2>
+    <hr class="my-4 bg-success" / >
+
+
+<!-- LINKS FOR COVID INFORMATION-->
+
+    <div class="card border border-dark">
+        <div class="card-header bg-dark">
+            <h2 class="lead text-success font-weight-bold"><i class="fas fa-shield-virus"></i> COVID TRACKING SITES</h2>
+        </div>
+        <div class="card-body">
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://www.worldometers.info/coronavirus/country/us/" target="_blank"> "Worldometers" covid tracking  </a></p>
+            <p class="lead text-success"><i class="fas fa-plus" target="_blank"> </i><a class="text-dark font-weight-bold"
+                    href="https://coronavirus.jhu.edu/map.html" target="_blank"> Johns Hopkins global covid tracking </a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://healthweather.us/?mode=Atypical" target="_blank"> Kinsa Thermometer fever tracking map </a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="http://covid19.healthdata.org/united-states-of-america/washington" target="_blank"> UW-IHME Covid (curve) Projections </a></p>
+        </div>
+    </div>
+
+    <br>
+        
+        <div class="card border border-dark">
+            <div class="card-header bg-dark">
+                <h2 class="lead text-success font-weight-bold"><i class="fas fa-head-side-mask"></i> SAFE DISTANCE/MASKING </h2>
+            </div>
+            <div class="card-body">
+                <iframe frameborder="0" scrolling="no" height="130" width="100%"
+                    src="https://www.wnyc.org/widgets/ondemand_player/wnycstudios/#file=/audio/json/1011736/&share=1"></iframe>
+            </div>            
+        </div>
+
+        <div class="card border border-dark">
+            <div class="card-header bg-dark">
+            </div>
+            <div class="card-body embed-responsive embed-responsive-16by9"">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/JJpt6Bse0j8" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card border border-dark">
+            <div class="card-header bg-dark">
+                <h2 class="lead text-success font-weight-bold"><i class="fas fa-vial"></i> DONATE YOUR PLASMA (recovered covid patients)
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                        href="https://www.redcrossblood.org/donate-blood/dlp/plasma-donations-from-recovered-covid-19-patients.html" target="_blank"> Recovered Covid- Plasma Donation</a></p>
+            </div>
+        </div>
+
+        <br>
+
+    <div class="card border border-dark">
+        <div class="card-header bg-dark">
+            <h2 class="lead text-success font-weight-bold"><i class="fas fa-virus-slash"></i> OFFICIAL GOVERNMENT SITES
+            </h2>
+        </div>
+
+        <div class="card-body">
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://coronavirus.wa.gov/" target="_blank"> WA State Official Covid Site</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://kingcounty.gov/depts/health/communicable-diseases/disease-control/novel-coronavirus.aspx" target="_blank">King County Official Covid Site</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    target="_blank" href="http://www.seattle.gov/mayor/covid-19" > City of Seattle Covid Site</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" target="_blank"> CDC Official Covid Site</a></p>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="card border border-dark">
+        <div class="card-header bg-dark">
+            <h2 class="lead text-success font-weight-bold"><i class="fas fa-money-bill-alt"></i> FINANCIAL, FOOD AND EMPLOYMENT SERVICES
+            </h2>
+        </div>
+
+        <div class="card-body">
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://www.esd.wa.gov/" target="_blank"> WA State Employment Security Dept</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://www.foodpantries.org/ci/wa-seattle" target="_blank"> Food Banks</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://dfi.wa.gov/coronavirus/financial-resources" target="_blank"> WA Covid Financial Assitance Information</a></p>
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://www.seattlepi.com/lifestyle/food/article/seattle-restaurants-for-take-out-15127219.php" target="_blank"> Support Local Restaurants</a></p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card border border-dark">
+        <div class="card-header bg-dark">
+            <h2 class="lead text-success font-weight-bold"><i class="fas fa-bus-alt"></i> TRANSPORTATION INFORMATION</h2>
+        </div>
+        <div class="card-body">
+            <p class="lead text-success"><i class="fas fa-plus"> </i><a class="text-dark font-weight-bold"
+                    href="https://kingcounty.gov/depts/transportation/metro/schedules-maps/service-change.aspx" target="_blank"> Transit Route Revisions-Covid</a></p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
+

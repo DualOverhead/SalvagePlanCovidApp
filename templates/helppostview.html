@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<p> <a href="{% url 'home' %}" class="btn btn-success btn-lg btn-block">Return Home</a></p>
+
+
+{% for post in object_list %}
+<div class="card card border-dark mb-3">
+    
+    <div class="card-header text-success bg-dark">
+        <h5 class="card-title">{{post.author}} from {{post.neighborhood}} Needs {{post.description}} </h5>
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p>{{post.created_at}}</p>            
+            <form method="POST" action="{%url 'message' %}">
+                {% csrf_token %}
+                <input type="hidden" name="author_email" value={{post.author.email}}>
+                <input type="hidden" name="author_name" value={{post.author}}>
+                <input type="hidden" name="subject" value={{post.title}}>
+                <span> <button class=" btn btn-block btn-success btn-sm float-right " type="submit">Respond to Request</button>
+                </span>
+            </form>
+    </div>
+
+</div>
+<br>
+{% endfor %}
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p> <a href="{% url 'home' %}" class="btn btn-success btn-lg btn-block">Return Home</a></p>
+
+
+{% for post in object_list %}
+{% if user == post.author %}
+<div class="card card border-dark mb-3">
+    <div class="card-header text-success bg-dark">
+        <h5 class="card-title">{{post.author}} from {{post.neighborhood}} is Offering {{post.description}} </h5>
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p>{{post.created_at}}</p>
+        <p> <a href="{% url 'offer_delete' post.pk %}" class="btn btn-danger">Delete your Post</a></p>
+    </div>
+</div>
+{% endif %}
+<br>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div class="jumbotron bg-dark">
+    <h1 class="display-4 text-success">Salvage Plan <i class="fas fa-ambulance"></i></h1>
+    <hr class="bg-success">
+    <p class="lead text-success">Seattle Community Covid Response Resource Locator</p>
+    <hr class="my-4 bg-success">
+
+    <form method="POST" class="text-success">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+    </form>
+</div>
+
+{%endblock content%}

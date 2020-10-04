@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>Delete Offer</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{post.title}}</p>
+    <button class="btn btn-danger" type="submit">Confirm</button>
+</form>
+
+{% endif %}
+
+{% endblock content %}

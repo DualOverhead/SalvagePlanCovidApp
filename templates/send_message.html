@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Send Message Page</h2>
+
+<div class="jumbotron bg-dark">
+    <h1 class="display-4 text-success">Salvage Plan <i class="fas fa-ambulance"></i></h1>
+    <hr class="bg-success">
+
+    <form method="POST" action="{%url 'message_sent' %}">
+        {% csrf_token %}
+
+        <p class="lead text-success">To: {{name}}</p>
+        <p class="lead text-success">From: {{user}}</p>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="text-success">Your Message:</label>
+            <textarea name="your_message" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                placeholder="-your message-" required></textarea>
+        </div>
+
+        <input type="hidden" name="user_name" value={{user}} />
+        <input type="hidden" name="email" value={{email}} />
+
+        <span> <button class=" btn btn-block btn-success btn-sm float-right " type="submit">Send Message</button></span>
+    </form>
+
+</div>
+
+{% endblock content %}
+
+
